@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>next button</title>
+<style>
+    /* button */
+    .outBox {
+        padding-top: 10%;
+        margin: 0 auto;
+        width: 200px;
+    }
+
+    .next-button {
+        background-color: #FFC125;
+        margin-bottom: 8px;
+        margin-right: 20px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .step-one, .step-two, .step-three, .step-four {
+        border: 1px solid #010101;
+        margin: 0 auto;
+    }
+
+    .step-two, .step-three, .step-four {
+        display: none;
+    }
+
+    .step-two-0, .step-two-1{
+        border: 1px solid red;
+        margin: 0 auto;
+    }
+</style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="step-one">
+            <div class="outBox">
+                <h4>This is div 1.</h4>
+                <span class="next-button">Next</span>
+            </div>
+        </div>
+        <div class="step-three">
+            <div class="outBox">
+                <h4>This is div 3.</h4>
+                <span class="next-button">Next</span>
+            </div>
+        </div>
+        <div class="step-four">
+            <div class="outBox">
+                <h4>This is div 4.</h4>
+                <span class="next-button">Next</span>
+            </div>
+        </div>
+    </body>
+    <script>
+            var stepContent = '<div class="step-two-0" style="display: none;"><div class="outBox"><h4>This is div 2-1.</h4><span class="next-button">Next</span></div></div><div class="step-two-1" style="display: none;"><div class="outBox"><h4>This is div 2-2.</h4><span class="next-button">Next</span></div></div>';
+            $(".step-one").after(stepContent)
+            $(".outBox span.next-button").bind("click", function () {
+                var parentObj = $(this).parent().parent();
+                parentObj.hide();
+                parentObj.next().css('display', 'block');
+            });
+    </script>
+</html>

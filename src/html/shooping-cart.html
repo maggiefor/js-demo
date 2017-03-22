@@ -1,0 +1,56 @@
+<head>
+<title></title>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function(){
+        $(".btn-add").click(function(){
+            var input_num = $(this).parent().find('input[class*=input-num]');
+            input_num.val(parseInt(input_num.val())+1);
+
+            showTotal();
+        });
+
+        $(".btn-min").click(function(){
+            var input_num = $(this).parent().find('input[class*=input-num]');
+            input_num.val(parseInt(input_num.val())-1);
+            if(parseInt(input_num.val())<0){
+                input_num.val(0);
+            }
+
+            showTotal();
+        });
+
+        function showTotal(){
+            var amount = 0;
+            $("#tab td").each(function(){
+                amount += parseInt($(this).find('input[class*=input-num]').val())*parseFloat($(this).find('span[class*=price]').text());
+            });
+            $("#total").html(amount.toFixed(2));
+        }
+
+        showTotal();
+    });
+</script>
+</head>
+<body>
+<table id="tab">
+    <tr>
+        <td>
+            <span>单价:</span><span class="price">5.95</span>
+            <input class="btn-min" name="" type="button" value="-" />
+            <input class="input-num" name="" type="text" value="0" />
+            <input class="btn-add" name="" type="button" value="+" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>单价:</span><span class="price">8.88</span>
+            <input class="btn-min" name="" type="button" value="-" />
+            <input class="input-num" name="" type="text" value="0" />
+            <input class="btn-add" name="" type="button" value="+" />
+        </td>
+    </tr>
+</table>
+<p>总价：<label id="total"></label></p>
+</body>
+</html>

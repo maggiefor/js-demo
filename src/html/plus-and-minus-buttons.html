@@ -1,0 +1,30 @@
+<head></head>
+<body>
+    <ul class="btn-numbox">
+        <li><span class="number">数量</span></li>
+        <li>
+            <ul class="count">
+                <li><span id="btn-minus" class="btn-minus">-</span></li>
+                <li><input type="text" class="input-num" id="input-num" value="0" /></li>
+                <li><span id="btn-plus" class="btn-plus">+</span></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<script type="text/javascript">
+    var num_plus = document.getElementById("btn-plus");
+    var num_minus = document.getElementById("btn-minus");
+    var input_num = document.getElementById("input-num");
+
+    num_plus.onclick = function() {
+        input_num.value = parseInt(input_num.value) + 1;
+    }
+
+    num_minus.onclick = function() {
+        if(input_num.value <= 0) {
+            input_num.value = 0;
+        } else {
+            input_num.value = parseInt(input_num.value) - 1;
+        }
+    }
+</script>
